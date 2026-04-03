@@ -1,728 +1,832 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="he" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AdvoxWebs - Adeem | פיתוח אתרים וחנויות אונליין</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        :root {
-            --primary: #2d9b9b;
-            --primary-dark: #1a5c5c;
-            --accent: #0a3d3d;
-            --light-bg: #f8fbfb;
-            --text-dark: #1a1a1a;
-            --text-light: #6b7280;
-            --border-color: #e5e7eb;
-        }
+      :root {
+        --primary: #2d9b9b;
+        --primary-dark: #1a5c5c;
+        --accent: #0a3d3d;
+        --light-bg: #f8fbfb;
+        --text-dark: #1a1a1a;
+        --text-light: #6b7280;
+        --border-color: #e5e7eb;
+      }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            color: var(--text-dark);
-            line-height: 1.6;
-            background: white;
-            direction: rtl;
-            position: relative;
-        }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        color: var(--text-dark);
+        line-height: 1.6;
+        background: white;
+        direction: rtl;
+        position: relative;
+      }
 
-        /* Logo Watermark Background */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 400px;
-            height: 400px;
-            background: url('advoxwebs-logo.png') no-repeat center;
-            background-size: contain;
-            opacity: 0.16;
-            z-index: -1;
-            pointer-events: none;
-        }
+      /* Logo Watermark Background */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px;
+        height: 400px;
+        background: url("advoxwebs-logo.png") no-repeat center;
+        background-size: contain;
+        opacity: 0.16;
+        z-index: -1;
+        pointer-events: none;
+      }
 
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
-            z-index: 1000;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            animation: slideDown 0.6s ease-out;
-        }
+      /* Navigation */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border-color);
+        z-index: 1000;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        animation: slideDown 0.6s ease-out;
+      }
 
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
         }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-dark);
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-dark);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--text-dark);
+        font-size: 0.95rem;
+        transition: color 0.3s ease;
+        cursor: pointer;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      /* Hero Section */
+      .hero {
+        margin-top: 70px;
+        padding: 5rem 2rem;
+        text-align: center;
+        background: linear-gradient(135deg, #f8fbfb 0%, #ffffff 100%);
+        min-height: 650px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: fadeInUp 1s ease-out;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero-logo {
+        max-width: 120px;
+        height: auto;
+        margin: 0 auto 2rem;
+        display: block;
+        animation: fadeInDown 0.8s ease-out;
+      }
+
+      .hero h1 {
+        font-size: 4rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: var(--text-dark);
+        line-height: 1.2;
+      }
+
+      .hero h1 span {
+        color: var(--primary);
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        color: var(--text-light);
+        margin-bottom: 0.8rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.05rem;
+        color: var(--text-light);
+        margin-top: 2.5rem;
+        line-height: 1.8;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-subtitle .highlight {
+        color: var(--primary);
+        font-weight: 600;
+      }
+
+      .cta-button {
+        display: inline-block;
+        padding: 1rem 2.5rem;
+        background: var(--primary);
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        margin-top: 2rem;
+      }
+
+      .cta-button:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(45, 155, 155, 0.2);
+      }
+
+      /* Services Section */
+      .services {
+        padding: 4rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        text-align: center;
+        margin-bottom: 3rem;
+        color: var(--text-dark);
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+      }
+
+      .service-card {
+        padding: 2rem;
+        background: white;
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        animation: slideInUp 0.6s ease-out both;
+      }
+
+      .service-card:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .service-card:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .service-card:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .service-card:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .service-card:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+
+      @keyframes slideInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .service-card:hover {
+        border-color: var(--primary);
+        box-shadow: 0 15px 35px rgba(45, 155, 155, 0.1);
+        transform: translateY(-5px);
+      }
+
+      .service-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .service-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.8rem;
+        color: var(--text-dark);
+      }
+
+      .service-card p {
+        color: var(--text-light);
+        font-size: 0.95rem;
+      }
+
+      /* Portfolio Section */
+      .portfolio {
+        padding: 4rem 2rem;
+        background: var(--light-bg);
+      }
+
+      .portfolio-content {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .portfolio-item {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        animation: scaleIn 0.5s ease-out both;
+        cursor: pointer;
+      }
+
+      .portfolio-item:nth-child(1) {
+        animation-delay: 0.2s;
+      }
+
+      @keyframes scaleIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .portfolio-item:hover {
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        transform: translateY(-8px);
+      }
+
+      .portfolio-image {
+        width: 100%;
+        height: 200px;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 3rem;
+        transition: all 0.3s ease;
+        padding: 1rem;
+      }
+
+      .portfolio-image img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+      }
+
+      .portfolio-item:hover .portfolio-image {
+        background: linear-gradient(
+          135deg,
+          var(--primary-dark) 0%,
+          var(--accent) 100%
+        );
+      }
+
+      .portfolio-info {
+        padding: 1.5rem;
+      }
+
+      .portfolio-info h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        color: var(--text-dark);
+      }
+
+      .portfolio-info p {
+        color: var(--text-light);
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+      }
+
+      .tech-tags {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+
+      .tech-tag {
+        display: inline-block;
+        padding: 0.4rem 0.8rem;
+        background: var(--light-bg);
+        color: var(--primary);
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        padding: 4rem 2rem;
+        text-align: center;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        color: white;
+      }
+
+      .cta-section h2 {
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+      }
+
+      .cta-section p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        opacity: 0.95;
+      }
+
+      .cta-button-white {
+        display: inline-block;
+        padding: 1rem 2.5rem;
+        background: white;
+        color: var(--primary);
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+      }
+
+      .cta-button-white:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Footer */
+      footer {
+        background: var(--text-dark);
+        color: white;
+        padding: 2rem;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      footer img {
+        height: 50px;
+        margin-bottom: 1rem;
+        display: block;
+      }
+
+      footer p {
+        margin-bottom: 0.5rem;
+      }
+
+      /* Modal */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 2000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        overflow: auto;
+        animation: fadeIn 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .modal-content {
+        background-color: white;
+        margin: 5% auto;
+        padding: 2rem;
+        border-radius: 12px;
+        max-width: 800px;
+        max-height: 80vh;
+        overflow-y: auto;
+        animation: slideUp 0.3s ease;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .close-button {
+        color: #aaa;
+        float: left;
+        font-size: 2rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .close-button:hover {
+        color: var(--primary);
+      }
+
+      .modal-header {
+        margin-bottom: 1.5rem;
+        border-bottom: 2px solid var(--border-color);
+        padding-bottom: 1rem;
+      }
+
+      .modal-header h2 {
+        color: var(--primary);
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .modal-section {
+        margin-bottom: 2rem;
+      }
+
+      .modal-section h3 {
+        color: var(--text-dark);
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+      }
+
+      .modal-section p {
+        color: var(--text-light);
+        line-height: 1.8;
+        margin-bottom: 1rem;
+      }
+
+      .highlights-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .highlights-list li {
+        padding: 0.8rem 0;
+        padding-right: 2rem;
+        border-bottom: 1px solid var(--border-color);
+        color: var(--text-light);
+      }
+
+      .highlights-list li:before {
+        content: "✓ ";
+        color: var(--primary);
+        font-weight: bold;
+        margin-right: 0.5rem;
+      }
+
+      .modal-link {
+        display: inline-block;
+        margin-top: 1.5rem;
+        padding: 0.8rem 2rem;
+        background: var(--primary);
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+
+      .modal-link:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.5rem;
         }
 
         .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
-            cursor: pointer;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        /* Hero Section */
-        .hero {
-            margin-top: 70px;
-            padding: 5rem 2rem;
-            text-align: center;
-            background: linear-gradient(135deg, #f8fbfb 0%, #ffffff 100%);
-            min-height: 650px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-logo {
-            max-width: 120px;
-            height: auto;
-            margin: 0 auto 2rem;
-            display: block;
-            animation: fadeInDown 0.8s ease-out;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--text-dark);
-            line-height: 1.2;
-        }
-
-        .hero h1 span {
-            color: var(--primary);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-light);
-            margin-bottom: 0.8rem;
-        }
-
-        .hero-subtitle {
-            font-size: 1.05rem;
-            color: var(--text-light);
-            margin-top: 2.5rem;
-            line-height: 1.8;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-subtitle .highlight {
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: var(--primary);
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            margin-top: 2rem;
-        }
-
-        .cta-button:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(45, 155, 155, 0.2);
-        }
-
-        /* Services Section */
-        .services {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+          gap: 1rem;
+          font-size: 0.9rem;
         }
 
         .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--text-dark);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            padding: 2rem;
-            background: white;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            animation: slideInUp 0.6s ease-out both;
-        }
-
-        .service-card:nth-child(1) { animation-delay: 0.1s; }
-        .service-card:nth-child(2) { animation-delay: 0.2s; }
-        .service-card:nth-child(3) { animation-delay: 0.3s; }
-        .service-card:nth-child(4) { animation-delay: 0.4s; }
-        .service-card:nth-child(5) { animation-delay: 0.5s; }
-
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .service-card:hover {
-            border-color: var(--primary);
-            box-shadow: 0 15px 35px rgba(45, 155, 155, 0.1);
-            transform: translateY(-5px);
-        }
-
-        .service-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .service-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.8rem;
-            color: var(--text-dark);
-        }
-
-        .service-card p {
-            color: var(--text-light);
-            font-size: 0.95rem;
-        }
-
-        /* Portfolio Section */
-        .portfolio {
-            padding: 4rem 2rem;
-            background: var(--light-bg);
-        }
-
-        .portfolio-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .portfolio-item {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            animation: scaleIn 0.5s ease-out both;
-            cursor: pointer;
-        }
-
-        .portfolio-item:nth-child(1) { animation-delay: 0.2s; }
-
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .portfolio-item:hover {
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-            transform: translateY(-8px);
-        }
-
-        .portfolio-image {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
-            transition: all 0.3s ease;
-            padding: 1rem;
-        }
-
-        .portfolio-image img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-
-        .portfolio-item:hover .portfolio-image {
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--accent) 100%);
-        }
-
-        .portfolio-info {
-            padding: 1.5rem;
-        }
-
-        .portfolio-info h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-dark);
-        }
-
-        .portfolio-info p {
-            color: var(--text-light);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .tech-tags {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .tech-tag {
-            display: inline-block;
-            padding: 0.4rem 0.8rem;
-            background: var(--light-bg);
-            color: var(--primary);
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            padding: 4rem 2rem;
-            text-align: center;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
-        }
-
-        .cta-section h2 {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
-        }
-
-        .cta-section p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-        }
-
-        .cta-button-white {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: white;
-            color: var(--primary);
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-
-        .cta-button-white:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--text-dark);
-            color: white;
-            padding: 2rem;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        footer img {
-            height: 50px;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        footer p {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            overflow: auto;
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+          font-size: 2rem;
         }
 
         .modal-content {
-            background-color: white;
-            margin: 5% auto;
-            padding: 2rem;
-            border-radius: 12px;
-            max-width: 800px;
-            max-height: 80vh;
-            overflow-y: auto;
-            animation: slideUp 0.3s ease;
+          margin: 20% auto;
+          width: 90%;
         }
 
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .hero-logo {
+          max-width: 100px;
         }
-
-        .close-button {
-            color: #aaa;
-            float: left;
-            font-size: 2rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .close-button:hover {
-            color: var(--primary);
-        }
-
-        .modal-header {
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 1rem;
-        }
-
-        .modal-header h2 {
-            color: var(--primary);
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .modal-section {
-            margin-bottom: 2rem;
-        }
-
-        .modal-section h3 {
-            color: var(--text-dark);
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            margin-top: 1rem;
-        }
-
-        .modal-section p {
-            color: var(--text-light);
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-
-        .highlights-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .highlights-list li {
-            padding: 0.8rem 0;
-            padding-right: 2rem;
-            border-bottom: 1px solid var(--border-color);
-            color: var(--text-light);
-        }
-
-        .highlights-list li:before {
-            content: "✓ ";
-            color: var(--primary);
-            font-weight: bold;
-            margin-right: 0.5rem;
-        }
-
-        .modal-link {
-            display: inline-block;
-            margin-top: 1.5rem;
-            padding: 0.8rem 2rem;
-            background: var(--primary);
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .modal-link:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .nav-links {
-                gap: 1rem;
-                font-size: 0.9rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .modal-content {
-                margin: 20% auto;
-                width: 90%;
-            }
-
-            .hero-logo {
-                max-width: 100px;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Navigation -->
     <nav>
-        <ul class="nav-links">
-            <li><a href="#services">שירותים</a></li>
-            <li><a href="#portfolio">פרויקטים</a></li>
-            <li><a href="#contact">צור קשר</a></li>
-        </ul>
-        <div class="logo">AdvoxWebs</div>
+      <ul class="nav-links">
+        <li><a href="#services">שירותים</a></li>
+        <li><a href="#portfolio">פרויקטים</a></li>
+        <li><a href="#contact">צור קשר</a></li>
+      </ul>
+      <div class="logo">AdvoxWebs</div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div style="width: 100%;">
-            <img src="advoxwebs-logo.png" alt="AdvoxWebs Logo" class="hero-logo">
-            
-            <h1>היי, אני <span>Adeem</span> 👋</h1>
-            <p>מייסד AdvoxWebs | בוגר B.Sc במדעי המחשב | מפתח Full-Stack</p>
-            <p style="font-size: 1.1rem; margin-bottom: 2.5rem; font-weight: 500;">אני לא רק בונה אתרים — אני בונה מערכות שעוזרות לעסק שלך לגדול 🚀</p>
-            
-            <div class="hero-subtitle">
-                <p>מתמחה בבניית אתרים, חנויות אונליין ומערכות Web לעסקים. בשנים האחרונות עבדתי על פיתוח פרויקטים מודרניים עם דגש על <span class="highlight">ביצועים, חוויית משתמש ופתרונות חכמים</span>.</p>
-                <p style="margin-top: 1rem;">היום, עסק בלי אתר — מפסיד לקוחות. המטרה שלי היא לקחת רעיון ולהפוך אותו ל<span class="highlight">מוצר דיגיטלי שעובד באמת</span>.</p>
-            </div>
+      <div style="width: 100%">
+        <img src="advoxwebs-logo.png" alt="AdvoxWebs Logo" class="hero-logo" />
 
-            <button class="cta-button" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">בואו נדבר</button>
+        <h1>היי, אני <span>Adeem</span> 👋</h1>
+        <p>מייסד AdvoxWebs | בוגר B.Sc במדעי המחשב | מפתח Full-Stack</p>
+        <p style="font-size: 1.1rem; margin-bottom: 2.5rem; font-weight: 500">
+          אני לא רק בונה אתרים — אני בונה מערכות שעוזרות לעסק שלך לגדול 🚀
+        </p>
+
+        <div class="hero-subtitle">
+          <p>
+            מתמחה בבניית אתרים, חנויות אונליין ומערכות Web לעסקים. בשנים
+            האחרונות עבדתי על פיתוח פרויקטים מודרניים עם דגש על
+            <span class="highlight">ביצועים, חוויית משתמש ופתרונות חכמים</span>.
+          </p>
+          <p style="margin-top: 1rem">
+            היום, עסק בלי אתר — מפסיד לקוחות. המטרה שלי היא לקחת רעיון ולהפוך
+            אותו ל<span class="highlight">מוצר דיגיטלי שעובד באמת</span>.
+          </p>
         </div>
+
+        <button
+          class="cta-button"
+          onclick="
+            document
+              .getElementById('services')
+              .scrollIntoView({ behavior: 'smooth' })
+          "
+        >
+          בואו נדבר
+        </button>
+      </div>
     </section>
 
     <!-- Services Section -->
     <section id="services" class="services">
-        <h2 class="section-title">במה אני מתעסק?</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">🌐</div>
-                <h3>בניית אתרים</h3>
-                <p>אתרים מודרניים, מהירים ורספונסיביים לעסקים וחברות עם ביצועים מעולים.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🛒</div>
-                <h3>חנויות אונליין</h3>
-                <p>פלטפורמות e-commerce מלאות עם ניהול מוצרים, סל קניות והשתלבות תשלומים חלקה.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">⚙️</div>
-                <h3>מערכות Web בהתאמה</h3>
-                <p>מערכות Web מקוסטומיות שמותאמות בדיוק לצרכים הייחודיים של העסק שלך.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">☁️</div>
-                <h3>פתרונות ענן</h3>
-                <p>הנחיית פרויקטים, ניהול וניסיון בפלטפורמות ענן למינימום downtime.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🔄</div>
-                <h3>שדרוג ואחזקה</h3>
-                <p>שדרוג, קידום ואחזקה של אתרים קיימים לשיפור ביצועים ופונקציונליות.</p>
-            </div>
+      <h2 class="section-title">במה אני מתעסק?</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🌐</div>
+          <h3>בניית אתרים</h3>
+          <p>
+            אתרים מודרניים, מהירים ורספונסיביים לעסקים וחברות עם ביצועים מעולים.
+            התאמה מלאה למובייל וחוויית משתמש מעולה.
+          </p>
         </div>
+        <div class="service-card">
+          <div class="service-icon">🛒</div>
+          <h3>חנויות אונליין</h3>
+          <p>
+            פלטפורמות e-commerce מלאות עם ניהול מוצרים, סל קניות והשתלבות
+            תשלומים חלקה.
+          </p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">⚙️</div>
+          <h3>מערכות Web בהתאמה</h3>
+          <p>
+            מערכות Web מקוסטומיות שמותאמות בדיוק לצרכים הייחודיים של העסק שלך.
+          </p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">☁️</div>
+          <h3>פתרונות ענן</h3>
+          <p>
+            הנחיית פרויקטים, ניהול וניסיון בפלטפורמות ענן למינימום downtime.
+          </p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🔄</div>
+          <h3>שדרוג ואחזקה</h3>
+          <p>
+            שדרוג, קידום ואחזקה של אתרים קיימים לשיפור ביצועים ופונקציונליות.
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio">
-        <div class="portfolio-content">
-            <h2 class="section-title">פרויקטים בולטים</h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-item" onclick="openModal('radianceModal')">
-                    <div class="portfolio-image">
-                        <img src="radiance-logo.png" alt="Radiance De Luxe">
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Radiance De Luxe</h3>
-                        <p>פלטפורמת e-commerce עבור מוצרי קוסמטיקה עם ממשק ניהול מלא, ניהול מלאי ואחסון תמונות בענן.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Next.js</span>
-                            <span class="tech-tag">MongoDB</span>
-                            <span class="tech-tag">Cloudinary</span>
-                            <span class="tech-tag">Vercel</span>
-                        </div>
-                    </div>
-                </div>
+      <div class="portfolio-content">
+        <h2 class="section-title">פרויקטים בולטים</h2>
+        <div class="portfolio-grid">
+          <div class="portfolio-item" onclick="openModal('radianceModal')">
+            <div class="portfolio-image">
+              <img src="radiance-logo.png" alt="Radiance De Luxe" />
             </div>
+            <div class="portfolio-info">
+              <h3>Radiance De Luxe</h3>
+              <p>
+                פלטפורמת e-commerce עבור מוצרי קוסמטיקה עם ממשק ניהול מלא, ניהול
+                מלאי ואחסון תמונות בענן.
+              </p>
+              <div class="tech-tags">
+                <span class="tech-tag">Next.js</span>
+                <span class="tech-tag">MongoDB</span>
+                <span class="tech-tag">Cloudinary</span>
+                <span class="tech-tag">Vercel</span>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Radiance Modal -->
     <div id="radianceModal" class="modal">
-        <div class="modal-content">
-            <span class="close-button" onclick="closeModal('radianceModal')">&times;</span>
-            
-            <div class="modal-header">
-                <h2>🛒 Radiance De Luxe</h2>
-                <p style="color: var(--text-light);">E-commerce Platform</p>
-            </div>
+      <div class="modal-content">
+        <span class="close-button" onclick="closeModal('radianceModal')"
+          >&times;</span
+        >
 
-            <div class="modal-section">
-                <h3>על הפרויקט</h3>
-                <p>פלטפורמת e-commerce מלאה עבור מוצרי קוסמטיקה פרימיום עם ממשק ניהול מתקדם, ניהול מלאי בזמן אמת ואחסון תמונות בענן. המערכת מאפשרת ללקוחות לצפות במוצרים, להוסיף למועדפים, לנהל סל קניות וביצוע הזמנות בקלות.</p>
-            </div>
-
-            <div class="modal-section">
-                <h3>נקודות מרכזיות</h3>
-                <ul class="highlights-list">
-                    <li>Admin dashboard מלא עם ניהול מוצרים</li>
-                    <li>ניהול מלאי בזמן אמת</li>
-                    <li>עגלת קניות עם סנכרון לData Base</li>
-                    <li>מערכת Favorites עם שמירה</li>
-                    <li>אחסון תמונות בענן (Cloudinary)</li>
-                    <li>זיהוי משתמש וניהול הזמנות</li>
-                    <li>ממשק רספונסיבי וידידותי</li>
-                </ul>
-            </div>
-
-            <div class="modal-section">
-                <h3>טכנולוגיות</h3>
-                <div class="tech-tags" style="gap: 1rem;">
-                    <span class="tech-tag" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">Next.js 16</span>
-                    <span class="tech-tag" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">MongoDB</span>
-                    <span class="tech-tag" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">Cloudinary</span>
-                    <span class="tech-tag" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">JWT Auth</span>
-                    <span class="tech-tag" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">Tailwind CSS</span>
-                    <span class="tech-tag" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">Render</span>
-                    <span class="tech-tag" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">Vercel</span>
-                </div>
-            </div>
-
-            <div class="modal-section">
-                <a href="https://radiance-deluxe.vercel.app" target="_blank" class="modal-link">צפה בפרויקט בחיים →</a>
-            </div>
+        <div class="modal-header">
+          <h2>🛒 Radiance De Luxe</h2>
+          <p style="color: var(--text-light)">E-commerce Platform</p>
         </div>
+        <div class="modal-section">
+          <a
+            href="https://radiance-deluxe.vercel.app"
+            target="_blank"
+            class="modal-link"
+            >בקרו בחנות Online</a
+          >
+        </div>
+        <div class="modal-section">
+          <h3>על הפרויקט</h3>
+          <p>
+            פלטפורמת e-commerce מלאה עבור מוצרי קוסמטיקה פרימיום עם ממשק ניהול
+            מתקדם, ניהול מלאי בזמן אמת ואחסון תמונות בענן. המערכת מאפשרת ללקוחות
+            לצפות במוצרים, להוסיף למועדפים, לנהל סל קניות וביצוע הזמנות בקלות.
+          </p>
+        </div>
+
+        <div class="modal-section">
+          <h3>נקודות מרכזיות</h3>
+          <ul class="highlights-list">
+            <li>Admin dashboard מלא עם ניהול מוצרים</li>
+            <li>ניהול מלאי בזמן אמת</li>
+            <li>עגלת קניות עם סנכרון לData Base</li>
+            <li>מערכת Favorites עם שמירה</li>
+            <li>אחסון תמונות בענן (Cloudinary)</li>
+            <li>זיהוי משתמש וניהול הזמנות</li>
+            <li>ממשק רספונסיבי וידידותי</li>
+          </ul>
+        </div>
+
+        <div class="modal-section">
+          <h3>טכנולוגיות</h3>
+          <div class="tech-tags" style="gap: 1rem">
+            <span
+              class="tech-tag"
+              style="padding: 0.6rem 1.2rem; font-size: 0.9rem"
+              >Next.js 16</span
+            >
+            <span
+              class="tech-tag"
+              style="padding: 0.6rem 1.2rem; font-size: 0.9rem"
+              >MongoDB</span
+            >
+            <span
+              class="tech-tag"
+              style="padding: 0.6rem 1.2rem; font-size: 0.9rem"
+              >Cloudinary</span
+            >
+            <span
+              class="tech-tag"
+              style="padding: 0.6rem 1.2rem; font-size: 0.9rem"
+              >JWT Auth</span
+            >
+            <span
+              class="tech-tag"
+              style="padding: 0.6rem 1.2rem; font-size: 0.9rem"
+              >Tailwind CSS</span
+            >
+            <span
+              class="tech-tag"
+              style="padding: 0.6rem 1.2rem; font-size: 0.9rem"
+              >Render</span
+            >
+            <span
+              class="tech-tag"
+              style="padding: 0.6rem 1.2rem; font-size: 0.9rem"
+              >Vercel</span
+            >
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- CTA Section -->
     <section id="contact" class="cta-section">
-        <h2>מוכן להביא את העסק שלך לשלב הבא?</h2>
-        <p>בואו נבנה משהו מדהים ביחד</p>
-        <a class="cta-button-white" href="https://www.instagram.com/adeem_daboor_advox?igsh=MTNtZWk5amxsYXRmNQ%3D%3D&utm_source=qr" target="_blank">צור קשר</a>
+      <h2>מוכן להביא את העסק שלך לשלב הבא?</h2>
+      <p>בואו נבנה משהו מדהים ביחד</p>
+      <a
+        class="cta-button-white"
+        href="https://www.instagram.com/adeem_daboor_advox?igsh=MTNtZWk5amxsYXRmNQ%3D%3D&utm_source=qr"
+        target="_blank"
+        >צור קשר</a
+      >
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 AdvoxWebs. כל הזכויות שמורות.</p>
-        <p>שירותי פיתוח חנויות אונליין, אתרים ומערכות Web</p>
+      <p>&copy; 2025 AdvoxWebs. כל הזכויות שמורות.</p>
+      <p>שירותי פיתוח חנויות אונליין, אתרים ומערכות Web</p>
     </footer>
 
     <script>
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'block';
-        }
+      function openModal(modalId) {
+        document.getElementById(modalId).style.display = "block";
+      }
 
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
-        }
+      function closeModal(modalId) {
+        document.getElementById(modalId).style.display = "none";
+      }
 
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = 'none';
-            }
+      window.onclick = function (event) {
+        if (event.target.classList.contains("modal")) {
+          event.target.style.display = "none";
         }
+      };
     </script>
-</body>
+  </body>
 </html>
