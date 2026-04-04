@@ -60,46 +60,364 @@
     <section id="services" class="services">
       <h2 class="section-title">במה אני מתעסק?</h2>
       <div class="services-grid">
-        <div class="service-card">
+        <!-- Service 1: Website Building -->
+        <div
+          class="service-card service-card-interactive"
+          onclick="openModal('websiteModal')"
+        >
           <div class="service-icon">🌐</div>
           <h3>בניית אתרים</h3>
           <p>
             אתרים מודרניים, מהירים ורספונסיביים לעסקים וחברות עם ביצועים מעולים.
             התאמה מלאה למובייל וחוויית משתמש מעולה.
           </p>
+          <a class="included-link">ראה מה כלול</a>
         </div>
-        <div class="service-card">
+
+        <!-- Service 2: E-commerce -->
+        <div
+          class="service-card service-card-interactive"
+          onclick="openModal('ecommerceModal')"
+        >
           <div class="service-icon">🛒</div>
           <h3>חנויות אונליין</h3>
           <p>
             פלטפורמות e-commerce מלאות עם ניהול מוצרים, סל קניות והשתלבות
             תשלומים חלקה.
           </p>
+          <a class="included-link">ראה מה כלול</a>
         </div>
-        <div class="service-card">
+
+        <!-- Service 3: Custom Web Systems -->
+        <div
+          class="service-card service-card-interactive"
+          onclick="openModal('customwebModal')"
+        >
           <div class="service-icon">⚙️</div>
           <h3>מערכות Web בהתאמה</h3>
           <p>
             מערכות Web מקוסטומיות שמותאמות בדיוק לצרכים הייחודיים של העסק שלך.
           </p>
+          <a class="included-link">ראה מה כלול</a>
         </div>
-        <div class="service-card">
+
+        <!-- Service 4: Cloud Solutions -->
+        <div
+          class="service-card service-card-interactive"
+          onclick="openModal('cloudModal')"
+        >
           <div class="service-icon">☁️</div>
           <h3>פתרונות ענן</h3>
           <p>
             הנחיית פרויקטים, ניהול וניסיון בפלטפורמות ענן למינימום downtime.
           </p>
+          <a class="included-link">ראה מה כלול</a>
         </div>
-        <div class="service-card">
+
+        <!-- Service 5: Upgrade & Maintenance -->
+        <div
+          class="service-card service-card-interactive"
+          onclick="openModal('upgradeModal')"
+        >
           <div class="service-icon">🔄</div>
           <h3>שדרוג ואחזקה</h3>
           <p>
             שדרוג, קידום ואחזקה של אתרים קיימים לשיפור ביצועים ופונקציונליות.
           </p>
+          <a class="included-link">ראה מה כלול</a>
         </div>
       </div>
     </section>
+    <!-- Service Modals -->
 
+    <!-- Modal 1: Website Building -->
+    <div id="websiteModal" class="modal">
+      <div class="modal-content" style="background-color: white">
+        <span class="close-button" onclick="closeModal('websiteModal')"
+          >&times;</span
+        >
+        <div class="modal-header">
+          <h2 style="color: black">🌐 בניית אתרים</h2>
+          <p style="color: #666">אתרים מודרניים לעסקים חזקים</p>
+        </div>
+        <div class="modal-section">
+          <h3 style="color: #1a1a1a">מה כלול בשירות?</h3>
+          <ul class="highlights-list">
+            <li style="color: #333; border-bottom: 1px solid #d4c4b8">
+              עיצוב מודרני ומקצועי
+            </li>
+            <li style="color: #333; border-bottom: 1px solid #d4c4b8">
+              התאמה מלאה לכל הגדלים (Responsive)
+            </li>
+            <li style="color: #333; border-bottom: 1px solid #d4c4b8">
+              ביצועים מהירים (Fast Loading)
+            </li>
+            <li style="color: #333; border-bottom: 1px solid #d4c4b8">
+              SEO Optimized - קל להופיע בגוגל
+            </li>
+            <li style="color: #333; border-bottom: 1px solid #d4c4b8">
+              אחסון בענן מהימן ובטוח
+            </li>
+            <li style="color: #333; border-bottom: 1px solid #d4c4b8">
+              Support טכני בחודשים הראשונים
+            </li>
+            <li style="color: #333">עדכונים ותחזוקה בחינם לשנה</li>
+          </ul>
+        </div>
+        <div class="modal-section">
+          <h3 style="color: #1a1a1a">למי זה מתאים?</h3>
+          <p style="color: #333">
+            עסקים, חברות, עצמאיים, דיני משרדים, חנויות קטנות וכל מי שרוצה נוכחות
+            דיגיטלית חזקה.
+          </p>
+        </div>
+        <div class="modal-section">
+          <button
+            class="cta-button"
+            onclick="
+              document
+                .getElementById('contact')
+                .scrollIntoView({ behavior: 'smooth' });
+              closeModal(this.closest('.modal').id);
+            "
+            style="width: 100%; margin-top: 1rem"
+          >
+            צור קשר
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 2: E-commerce -->
+    <div id="ecommerceModal" class="modal">
+      <div class="modal-content" style="background-color: white">
+        <span class="close-button" onclick="closeModal('ecommerceModal')"
+          >&times;</span
+        >
+        <div class="modal-header">
+          <h2 style="color: black">🛒 חנויות אונליין</h2>
+          <p style="color: #666">מכירות דיגיטליות בקלות וביטחון</p>
+        </div>
+        <div class="modal-section">
+          <h3 style="color: #1a1a1a">מה כלול בשירות?</h3>
+          <ul class="highlights-list">
+            <li style="color: #333; border-bottom: 1px solid #d4c4b8">
+              עמוד בית מקצועי למוצרים
+            </li>
+            <li style="color: #333; border-bottom: 1px solid #d4c4b8">
+              ניהול מוצרים וקטגוריות
+            </li>
+            <li style="color: #333; border-bottom: 1px solid #d4c4b8">
+              עגלת קניות מתקדמת
+            </li>
+            <li style="color: #333; border-bottom: 1px solid #d4c4b8">
+              שיטות תשלום מאובטחות
+            </li>
+            <li style="color: #333; border-bottom: 1px solid #d4c4b8">
+              מערכת הזמנות ואישור אוטומטי
+            </li>
+            <li style="color: #333; border-bottom: 1px solid #d4c4b8">
+              דוחות מכירות בזמן אמת
+            </li>
+            <li style="color: #333">אחסון תמונות בענן (unlimited)</li>
+          </ul>
+        </div>
+        <div class="modal-section">
+          <h3 style="color: #1a1a1a">למי זה מתאים?</h3>
+          <p style="color: #333">
+            חנויות, קוסמטיקה, ביגוד, אלקטרוניקה, כל עסק שרוצה להגדיל מכירות
+            באינטרנט.
+          </p>
+        </div>
+        <div class="modal-section">
+          <button
+            class="cta-button"
+            onclick="
+              document
+                .getElementById('contact')
+                .scrollIntoView({ behavior: 'smooth' });
+              closeModal(this.closest('.modal').id);
+            "
+            style="width: 100%; margin-top: 1rem"
+          >
+            צור קשר
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 3: Custom Web Systems -->
+    <div id="customwebModal" class="modal">
+      <div class="modal-content" style="background-color: white">
+        <span class="close-button" onclick="closeModal('customwebModal')"
+          >&times;</span
+        >
+        <div class="modal-header">
+          <h2 style="color: black">⚙️ מערכות Web בהתאמה</h2>
+          <p style="color: #666">פתרונות ייחודיים לצרכים ייחודיים</p>
+        </div>
+        <div class="modal-section">
+          <h3 style="color: #1a1a1a">מה כלול בשירות?</h3>
+          <ul class="highlights-list">
+            <li style="color: #333; border-bottom: 1px solid #d4c4b8">
+              ייעוץ טכני מלא
+            </li>
+            <li style="color: #333; border-bottom: 1px solid #d4c4b8">
+              עיצוב שיטות עבודה חדשות
+            </li>
+            <li style="color: #333; border-bottom: 1px solid #d4c4b8">
+              כללי עסקיים בהתאמה אישית
+            </li>
+            <li style="color: #333; border-bottom: 1px solid #d4c4b8">
+              ניהול משתמשים וחקיקה
+            </li>
+            <li style="color: #333; border-bottom: 1px solid #d4c4b8">
+              דוחות וניתוחי ביצועים
+            </li>
+            <li style="color: #333; border-bottom: 1px solid #d4c4b8">
+              Scalability - גדל עם העסק שלך
+            </li>
+            <li style="color: #333">תמיכה רציפה ועדכונים</li>
+          </ul>
+        </div>
+        <div class="modal-section">
+          <h3 style="color: #1a1a1a">למי זה מתאים?</h3>
+          <p style="color: #333">
+            חברות בינוניות, מוסדות, משרדי עורכי דין, בנקים ותאגידים שצריכים
+            מערכת ייחודית.
+          </p>
+        </div>
+        <div class="modal-section">
+          <button
+            class="cta-button"
+            onclick="
+              document
+                .getElementById('contact')
+                .scrollIntoView({ behavior: 'smooth' });
+              closeModal(this.closest('.modal').id);
+            "
+            style="width: 100%; margin-top: 1rem"
+          >
+            צור קשר
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 4: Cloud Solutions -->
+    <div id="cloudModal" class="modal">
+      <div class="modal-content" style="background-color: white">
+        <span class="close-button" onclick="closeModal('cloudModal')"
+          >&times;</span
+        >
+        <div class="modal-header">
+          <h2 style="color: black">☁️ פתרונות ענן</h2>
+          <p style="color: #666">תשתיות חזקות וניהול מקצועי</p>
+        </div>
+        <div class="modal-section">
+          <h3 style="color: #1a1a1a">מה כלול בשירות?</h3>
+          <ul class="highlights-list">
+            <li style="color: #333; border-bottom: 1px solid #d4c4b8">
+              הנחיית פרויקטים מלאה
+            </li>
+            <li style="color: #333; border-bottom: 1px solid #d4c4b8">
+              בחירת פתרונות ענן מתאימים
+            </li>
+            <li style="color: #333; border-bottom: 1px solid #d4c4b8">
+              ניסיון וייזום (Migration)
+            </li>
+            <li style="color: #333; border-bottom: 1px solid #d4c4b8">
+              אבטחה וגיבוי קבוע
+            </li>
+            <li style="color: #333; border-bottom: 1px solid #d4c4b8">
+              ניתור בעיות (Debugging)
+            </li>
+            <li style="color: #333; border-bottom: 1px solid #d4c4b8">
+              ניהול עומסים וביצועים
+            </li>
+            <li style="color: #333">Monitoring 24/7</li>
+          </ul>
+        </div>
+        <div class="modal-section">
+          <h3 style="color: #1a1a1a">למי זה מתאים?</h3>
+          <p style="color: #333">
+            חברות טכנולוגיה, startups, כל מי שרוצה ניהול תשתיות מקצועי וזול.
+          </p>
+        </div>
+        <div class="modal-section">
+          <button
+            class="cta-button"
+            onclick="
+              document
+                .getElementById('contact')
+                .scrollIntoView({ behavior: 'smooth' });
+              closeModal(this.closest('.modal').id);
+            "
+            style="width: 100%; margin-top: 1rem"
+          >
+            צור קשר
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 5: Upgrade & Maintenance -->
+    <div id="upgradeModal" class="modal">
+      <div class="modal-content" style="background-color: white">
+        <span class="close-button" onclick="closeModal('upgradeModal')"
+          >&times;</span
+        >
+        <div class="modal-header">
+          <h2 style="color: black">🔄 שדרוג ואחזקה</h2>
+          <p style="color: #666">שחיות בחיים ותקינות למערכות קיימות</p>
+        </div>
+        <div class="modal-section">
+          <h3 style="color: #1a1a1a">מה כלול בשירות?</h3>
+          <ul class="highlights-list">
+            <li style="color: #333; border-bottom: 1px solid #d4c4b8">
+              ניתוח האתר הקיים
+            </li>
+            <li style="color: #333; border-bottom: 1px solid #d4c4b8">
+              שדרוג לטכנולוגיות חדשות
+            </li>
+            <li style="color: #333; border-bottom: 1px solid #d4c4b8">
+              תיקון באגים וחולשות אבטחה
+            </li>
+            <li style="color: #333; border-bottom: 1px solid #d4c4b8">
+              שיפור ביצועים (Speed)
+            </li>
+            <li style="color: #333; border-bottom: 1px solid #d4c4b8">
+              תחזוקה חודשית קבועה
+            </li>
+            <li style="color: #333; border-bottom: 1px solid #d4c4b8">
+              עדכונים לתוכנות תלויות
+            </li>
+            <li style="color: #333">גיבוי אוטומטי ושחזור חוסן</li>
+          </ul>
+        </div>
+        <div class="modal-section">
+          <h3 style="color: #1a1a1a">למי זה מתאים?</h3>
+          <p style="color: #333">
+            בעלי אתרים קיימים, עסקים שרוצים שהאתר שלהם יישאר מהיר ובטוח, כל אדם
+            שחס על השקעתו.
+          </p>
+        </div>
+        <div class="modal-section">
+          <button
+            class="cta-button"
+            onclick="
+              document
+                .getElementById('contact')
+                .scrollIntoView({ behavior: 'smooth' });
+              closeModal(this.closest('.modal').id);
+            "
+            style="width: 100%; margin-top: 1rem"
+          >
+            צור קשר
+          </button>
+        </div>
+      </div>
+    </div>
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio">
       <div class="portfolio-content">
@@ -161,7 +479,7 @@
           <h2>🛒 Radiance De Luxe</h2>
           <p>E-commerce Platform</p>
         </div>
-        <div class="modal-section" >
+        <div class="modal-section">
           <a
             href="https://radiance-deluxe.vercel.app"
             target="_blank"
@@ -197,37 +515,72 @@
           <div class="tech-tags" style="gap: 1rem">
             <span
               class="tech-tag"
-              style="padding: 0.6rem 1.2rem; font-size: 0.9rem; background: #b94a3a; color: black"
+              style="
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+                background: #b94a3a;
+                color: black;
+              "
               >Next.js 16</span
             >
             <span
               class="tech-tag"
-              style="padding: 0.6rem 1.2rem; font-size: 0.9rem; background: #b94a3a; color: black"
+              style="
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+                background: #b94a3a;
+                color: black;
+              "
               >MongoDB</span
             >
             <span
               class="tech-tag"
-              style="padding: 0.6rem 1.2rem; font-size: 0.9rem; background: #b94a3a; color: black"
+              style="
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+                background: #b94a3a;
+                color: black;
+              "
               >Cloudinary</span
             >
             <span
               class="tech-tag"
-              style="padding: 0.6rem 1.2rem; font-size: 0.9rem; background: #b94a3a; color: black"
+              style="
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+                background: #b94a3a;
+                color: black;
+              "
               >JWT Auth</span
             >
             <span
               class="tech-tag"
-              style="padding: 0.6rem 1.2rem; font-size: 0.9rem; background: #b94a3a; color: black"
+              style="
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+                background: #b94a3a;
+                color: black;
+              "
               >Tailwind CSS</span
             >
             <span
               class="tech-tag"
-              style="padding: 0.6rem 1.2rem; font-size: 0.9rem; background: #b94a3a; color: black"
+              style="
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+                background: #b94a3a;
+                color: black;
+              "
               >Render</span
             >
             <span
               class="tech-tag"
-              style="padding: 0.6rem 1.2rem; font-size: 0.9rem; background: #b94a3a; color: black"
+              style="
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+                background: #b94a3a;
+                color: black;
+              "
               >Vercel</span
             >
           </div>

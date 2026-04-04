@@ -563,3 +563,44 @@ footer p {
     max-width: 100px;
   }
 }
+/* Interactive Service Cards */
+.service-card-interactive {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.service-card-interactive::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #2d9b9b 0%, #1a5c5c 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.service-card-interactive:hover::before {
+  transform: scaleX(1);
+}
+
+.included-link {
+  display: inline-block;
+  color: #2d9b9b;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.included-link:hover {
+  color: #1a5c5c;
+}
+
+.included-link::before {
+  content: "📋 ";
+}
