@@ -85,6 +85,7 @@ nav {
   font-size: 0.95rem;
   transition: color 0.3s ease;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .nav-links a:hover {
