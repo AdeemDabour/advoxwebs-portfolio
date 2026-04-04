@@ -450,16 +450,159 @@
     </div>
 
     <!-- CTA Section -->
-    <section id="contact" class="cta-section">
+    <section id="contact" class="cta-section" style="background: gray">
       <h2>מוכן להביא את העסק שלך לשלב הבא?</h2>
       <p>בואו נבנה משהו מדהים ביחד</p>
-      <a
-        class="cta-button-white"
-        href="https://www.instagram.com/adeem_daboor_advox?igsh=MTNtZWk5amxsYXRmNQ%3D%3D&utm_source=qr"
-        target="_blank"
-        >צור קשר</a
-      >
+      <div class="cta-buttons-row">
+        <a
+          href="https://www.instagram.com/adeem_daboor_advox?igsh=MTNtZWk5amxsYXRmNQ%3D%3D&utm_source=qr"
+          target="_blank"
+          class="cta-btn btn-instagram"
+        >
+          <span class="btn-icon">📱</span>
+          Instagram
+        </a>
+        <a
+          href="https://wa.me/1234567890"
+          target="_blank"
+          class="cta-btn btn-whatsapp"
+        >
+          <span class="btn-icon">💬</span>
+          WhatsApp
+        </a>
+        <button
+          class="cta-btn btn-email"
+          onclick="
+            document.getElementById('emailModal').style.display = 'block'
+          "
+        >
+          <span class="btn-icon">✉️</span>
+          Email
+        </button>
+      </div>
     </section>
+    <!-- Email Modal -->
+    <div id="emailModal" class="modal">
+      <div class="modal-content" style="background-color: white">
+        <span class="close-button" onclick="closeModal('emailModal')"
+          >&times;</span
+        >
+
+        <div class="modal-header">
+          <h2 style="color: black">✉️ שלח לי הודעה</h2>
+          <p style="color: #666">מלא את הטופס ואני אחזור אליך בקרוב</p>
+        </div>
+
+        <div class="modal-section">
+          <form onsubmit="sendEmail(event)">
+            <div class="form-group">
+              <label
+                style="
+                  color: #1a1a1a;
+                  font-weight: 600;
+                  display: block;
+                  margin-bottom: 0.5rem;
+                "
+                >שם</label
+              >
+              <input
+                type="text"
+                required
+                placeholder="שמך"
+                style="
+                  width: 100%;
+                  padding: 0.7rem;
+                  border: 1px solid #e5e7eb;
+                  border-radius: 6px;
+                  font-family: inherit;
+                "
+              />
+            </div>
+
+            <div class="form-group" style="margin-top: 1rem">
+              <label
+                style="
+                  color: #1a1a1a;
+                  font-weight: 600;
+                  display: block;
+                  margin-bottom: 0.5rem;
+                "
+                >טלפון</label
+              >
+              <input
+                type="tel"
+                required
+                placeholder="טלפון שלך"
+                style="
+                  width: 100%;
+                  padding: 0.7rem;
+                  border: 1px solid #e5e7eb;
+                  border-radius: 6px;
+                  font-family: inherit;
+                "
+              />
+            </div>
+
+            <div class="form-group" style="margin-top: 1rem">
+              <label
+                style="
+                  color: #1a1a1a;
+                  font-weight: 600;
+                  display: block;
+                  margin-bottom: 0.5rem;
+                "
+                >אימייל</label
+              >
+              <input
+                type="email"
+                required
+                placeholder="אימייל שלך"
+                style="
+                  width: 100%;
+                  padding: 0.7rem;
+                  border: 1px solid #e5e7eb;
+                  border-radius: 6px;
+                  font-family: inherit;
+                "
+              />
+            </div>
+
+            <div class="form-group" style="margin-top: 1rem">
+              <label
+                style="
+                  color: #1a1a1a;
+                  font-weight: 600;
+                  display: block;
+                  margin-bottom: 0.5rem;
+                "
+                >הודעה</label
+              >
+              <textarea
+                required
+                placeholder="כתוב משהו..."
+                style="
+                  width: 100%;
+                  padding: 0.7rem;
+                  border: 1px solid #e5e7eb;
+                  border-radius: 6px;
+                  font-family: inherit;
+                  min-height: 100px;
+                  resize: vertical;
+                "
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="cta-button"
+              style="width: 100%; margin-top: 1.5rem"
+            >
+              שלח הודעה ✉️
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -517,6 +660,23 @@
           event.target.style.display = "none";
         }
       };
+      function sendEmail(event) {
+        event.preventDefault();
+
+        const form = event.target;
+        const name = form.elements[0].value;
+        const phone = form.elements[1].value;
+        const email = form.elements[2].value;
+        const message = form.elements[3].value;
+
+        // Create mailto link (you'll need to set up a backend for actual email sending)
+        const mailtoLink = `mailto:advoxwebs@gmail.com?subject=Contact from ${name}&body=Name: ${name}%0DPhone: ${phone}%0DEmail: ${email}%0D%0DMessage:%0D${message}`;
+
+        window.location.href = mailtoLink;
+
+        closeModal("emailModal");
+        form.reset();
+      }
     </script>
   </body>
 </html>

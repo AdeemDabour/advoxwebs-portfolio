@@ -427,7 +427,7 @@ nav {
 
 /* Footer */
 footer {
-  background: var(--text-dark);
+  background: black;
   color: white;
   padding: 2rem;
   text-align: center;
@@ -723,4 +723,58 @@ footer p {
   color: #333;
   line-height: 1.6;
   margin-bottom: 1rem;
+}
+/* CTA Buttons */
+.cta-buttons-row {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.8rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: white;
+}
+
+.btn-instagram {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.btn-instagram:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+}
+
+.btn-whatsapp {
+  background: linear-gradient(135deg, #25d366 0%, #1e9e57 100%);
+}
+
+.btn-whatsapp:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+}
+
+.btn-email {
+  background: linear-gradient(135deg, #ea4335 0%, #c5221f 100%);
+}
+
+.btn-email:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(234, 67, 53, 0.3);
+}
+
+.btn-icon {
+  font-size: 1.2rem;
 }
