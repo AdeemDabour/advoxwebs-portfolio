@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AdvoxWebs - Adeem | פיתוח אתרים וחנויות אונליין</title>
+    <title>AdvoxWebs</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <!-- Apple Touch Icon (for home screen on iPhone/iPad) -->
-    <link rel="apple-touch-icon" href="advoxwebs-logo.png">
+    <link rel="apple-touch-icon" href="advoxwebs-logo.png" />
     <style>
       * {
         margin: 0;
@@ -141,7 +141,19 @@
         height: auto;
         margin: 0 auto 2rem;
         display: block;
-        animation: fadeInDown 0.8s ease-out;
+        animation: flipY 2s ease-in-out infinite;
+      }
+
+      @keyframes flipY {
+        0% {
+          transform: rotateY(0deg);
+        }
+        50% {
+          transform: rotateY(180deg);
+        }
+        100% {
+          transform: rotateY(360deg);
+        }
       }
 
       .hero h1 {
@@ -224,23 +236,25 @@
         border: 1px solid var(--border-color);
         border-radius: 12px;
         transition: all 0.3s ease;
-        animation: slideInUp 0.6s ease-out both;
+        animation:
+          slideInUp 0.6s ease-out both,
+          float 3s ease-in-out infinite;
       }
 
       .service-card:nth-child(1) {
-        animation-delay: 0.1s;
+        animation-delay: 0.1s, 0s;
       }
       .service-card:nth-child(2) {
-        animation-delay: 0.2s;
+        animation-delay: 0.2s, 0.3s;
       }
       .service-card:nth-child(3) {
-        animation-delay: 0.3s;
+        animation-delay: 0.3s, 0.6s;
       }
       .service-card:nth-child(4) {
-        animation-delay: 0.4s;
+        animation-delay: 0.4s, 0.9s;
       }
       .service-card:nth-child(5) {
-        animation-delay: 0.5s;
+        animation-delay: 0.5s, 1.2s;
       }
 
       @keyframes slideInUp {
@@ -251,6 +265,16 @@
         to {
           opacity: 1;
           transform: translateY(0);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
         }
       }
 
@@ -302,6 +326,7 @@
         transition: all 0.3s ease;
         animation: scaleIn 0.5s ease-out both;
         cursor: pointer;
+        opacity: 0;
       }
 
       .portfolio-item:nth-child(1) {
@@ -611,7 +636,7 @@
       <div style="width: 100%">
         <img src="advoxwebs-logo.png" alt="AdvoxWebs Logo" class="hero-logo" />
 
-        <h1>היי, אני <span>Adeem</span> 👋</h1>
+        <h1>היי, אני <span>Adeem</span></h1>
         <p>מייסד AdvoxWebs | בוגר B.Sc במדעי המחשב | מפתח Full-Stack</p>
         <p style="font-size: 1.1rem; margin-bottom: 2.5rem; font-weight: 500">
           אני לא רק בונה אתרים — אני בונה מערכות שעוזרות לעסק שלך לגדול 🚀
