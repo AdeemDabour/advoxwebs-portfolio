@@ -1,4 +1,4 @@
-const resend = require('resend');
+const { Resend } = require('resend');
 
 export default async function handler(req, res) {
   // Only accept POST requests
@@ -14,10 +14,14 @@ export default async function handler(req, res) {
   }
 
   try {
+    // Initialize Resend with API key from environment variable
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
     // Send email using Resend
     const result = await resend.emails.send({
-      from: 'noreply@advoxwebs.com', // Change this to your domain or use default
+      from: 'onboarding@resend.dev', // Use Resend's default email
       to: 'advoxwebs@gmail.com', // Your email
+      replyTo: email, // User's email for replies
       subject: `New Contact Form Submission from ${name}`,
       html: `
         <h2>New Contact Form Submission</h2>
