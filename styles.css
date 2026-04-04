@@ -15,7 +15,8 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   color: var(--text-dark);
   line-height: 1.6;
   background: white;
@@ -225,7 +226,9 @@ nav {
   border: 1px solid var(--border-color);
   border-radius: 12px;
   transition: all 0.3s ease;
-  animation: slideInUp 0.6s ease-out both, float 3s ease-in-out infinite;
+  animation:
+    slideInUp 0.6s ease-out both,
+    float 3s ease-in-out infinite;
 }
 
 .service-card:nth-child(1) {
@@ -386,62 +389,28 @@ nav {
 
 /* CTA Section */
 .cta-section {
-  padding: 4rem 2rem;
+  padding: 2rem;
   text-align: center;
-  background: linear-gradient(
-    135deg,
-    var(--primary) 0%,
-    var(--primary-dark) 100%
-  );
-  color: white;
+  color: black;
 }
 
 .cta-section h2 {
   font-size: 2.2rem;
-  margin-bottom: 1rem;
 }
 
 .cta-section p {
   font-size: 1.1rem;
-  margin-bottom: 2rem;
   opacity: 0.95;
-}
-
-.cta-button-white {
-  display: inline-block;
-  padding: 1rem 2.5rem;
-  background: white;
-  color: var(--primary);
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  border: none;
-  cursor: pointer;
-}
-
-.cta-button-white:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 /* Footer */
 footer {
-  background: black;
-  color: white;
-  padding: 2rem;
+  background: rgb(180, 180, 180);
+  color: black;
   text-align: center;
   font-size: 0.9rem;
-}
-
-footer img {
-  height: 50px;
-  margin-bottom: 1rem;
-  display: block;
-}
-
-footer p {
-  margin-bottom: 0.5rem;
+  font-weight: bold;
+  border-top: black 1px solid;
 }
 
 /* Modal */
@@ -572,7 +541,7 @@ footer p {
 }
 
 .service-card-interactive::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -624,13 +593,17 @@ footer p {
 }
 
 .service-card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+  background: linear-gradient(
+    90deg,
+    var(--primary) 0%,
+    var(--primary-dark) 100%
+  );
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s ease;
@@ -696,7 +669,9 @@ footer p {
 .service-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
+  transition:
+    max-height 0.3s ease,
+    opacity 0.3s ease;
   opacity: 0;
 }
 
@@ -730,7 +705,6 @@ footer p {
   gap: 1.5rem;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 1.5rem;
 }
 
 .cta-btn {
