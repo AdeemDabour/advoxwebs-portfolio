@@ -494,7 +494,7 @@
         </div>
 
         <div class="modal-section">
-          <form onsubmit="sendEmail(event)">
+          <form id="contactForm" onsubmit="handleSubmit(event)">
             <div class="form-group">
               <label
                 style="
@@ -507,6 +507,7 @@
               >
               <input
                 type="text"
+                name="name"
                 required
                 placeholder="שמך"
                 style="
@@ -531,6 +532,7 @@
               >
               <input
                 type="tel"
+                name="phone"
                 required
                 placeholder="טלפון שלך"
                 style="
@@ -555,6 +557,7 @@
               >
               <input
                 type="email"
+                name="email"
                 required
                 placeholder="אימייל שלך"
                 style="
@@ -578,6 +581,7 @@
                 >הודעה</label
               >
               <textarea
+                name="message"
                 required
                 placeholder="כתוב משהו..."
                 style="
@@ -660,22 +664,50 @@
           event.target.style.display = "none";
         }
       };
-      function sendEmail(event) {
+      async function handleSubmit(event) {
         event.preventDefault();
 
         const form = event.target;
-        const name = form.elements[0].value;
-        const phone = form.elements[1].value;
-        const email = form.elements[2].value;
-        const message = form.elements[3].value;
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
 
-        // Create mailto link (you'll need to set up a backend for actual email sending)
-        const mailtoLink = `mailto:advoxwebs@gmail.com?subject=Contact from ${name}&body=Name: ${name}%0DPhone: ${phone}%0DEmail: ${email}%0D%0DMessage:%0D${message}`;
+        // Disable button and show loading
+        submitBtn.disabled = true;
+        submitBtn.textContent = "שולח...";
 
-        window.location.href = mailtoLink;
+        const formData = {
+          name: form.name.value,
+          phone: form.phone.value,
+          email: form.email.value,
+          message: form.message.value,
+        };
 
-        closeModal("emailModal");
-        form.reset();
+        try {
+          const response = await fetch("/api/send-email", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          });
+
+          const data = await response.json();
+
+          if (response.ok) {
+            alert("✅ הודעה נשלחה בהצלחה! תחזור אליך בקרוב");
+            form.reset();
+            closeModal("emailModal");
+          } else {
+            alert("❌ שגיאה בשליחה: " + (data.error || "נסה שוב"));
+          }
+        } catch (error) {
+          console.error("Error:", error);
+          alert("❌ שגיאה בחיבור. נסה שוב");
+        } finally {
+          // Re-enable button
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+        }
       }
     </script>
   </body>
