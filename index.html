@@ -671,16 +671,23 @@
         const submitBtn = form.querySelector('button[type="submit"]');
         const originalText = submitBtn.textContent;
 
+        const formData = {
+          name: form.name.value.trim(),
+          phone: form.phone.value.trim(),
+          email: form.email.value.trim(),
+          message: form.message.value.trim(),
+        };
+
+        // Validate inputs
+        const validation = validateForm(formData);
+        if (!validation.valid) {
+          showNotification(validation.error, "error");
+          return;
+        }
+
         // Disable button and show loading
         submitBtn.disabled = true;
         submitBtn.textContent = "שולח...";
-
-        const formData = {
-          name: form.name.value,
-          phone: form.phone.value,
-          email: form.email.value,
-          message: form.message.value,
-        };
 
         try {
           const response = await fetch("/api/send-email", {
@@ -696,7 +703,7 @@
           if (response.ok) {
             // Show success message
             showNotification(
-              "✅ הודעה נשלחה בהצלחה! נחזור אליך בקרוב",
+              "✅ הודעה נשלחה בהצלחה! תחזור אליך בקרוב",
               "success",
             );
             form.reset();
@@ -718,6 +725,62 @@
           submitBtn.disabled = false;
           submitBtn.textContent = originalText;
         }
+      }
+
+      // Validation function
+      function validateForm(data) {
+        // Check if fields are empty
+        if (!data.name || !data.phone || !data.email || !data.message) {
+          return {
+            valid: false,
+            error: "❌ אנא מלא את כל השדות",
+          };
+        }
+
+        // Validate name (at least 2 characters)
+        if (data.name.length < 2) {
+          return {
+            valid: false,
+            error: "❌ שם חייב להיות לפחות 2 תווים",
+          };
+        }
+
+        // Validate phone (must start with 05 and be at least 10 digits)
+        const phoneRegex = /^05[0-9]{8,}$/;
+        const phoneDigitsOnly = data.phone.replace(/\D/g, "");
+        if (!phoneRegex.test(phoneDigitsOnly)) {
+          return {
+            valid: false,
+            error: "❌ מספר טלפון חייב להתחיל ב-05 ולהיות 10 ספרות",
+          };
+        }
+
+        // Validate email (proper email format)
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(data.email)) {
+          return {
+            valid: false,
+            error: "❌ אימייל לא תקין. בדוק שהוא בפורמט: example@email.com",
+          };
+        }
+
+        // Validate message (at least 10 characters)
+        if (data.message.length < 10) {
+          return {
+            valid: false,
+            error: "❌ הודעה חייבת להיות לפחות 10 תווים",
+          };
+        }
+
+        // Validate message (max 1000 characters)
+        if (data.message.length > 1000) {
+          return {
+            valid: false,
+            error: "❌ הודעה לא יכולה להיות יותר מ-1000 תווים",
+          };
+        }
+
+        return { valid: true };
       }
       function showNotification(message, type) {
         // Create notification element
