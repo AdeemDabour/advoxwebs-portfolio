@@ -694,20 +694,60 @@
           const data = await response.json();
 
           if (response.ok) {
-            alert("✅ הודעה נשלחה בהצלחה! תחזור אליך בקרוב");
+            // Show success message
+            showNotification(
+              "✅ הודעה נשלחה בהצלחה! נחזור אליך בקרוב",
+              "success",
+            );
             form.reset();
-            closeModal("emailModal");
+            setTimeout(() => {
+              closeModal("emailModal");
+            }, 1500);
           } else {
-            alert("❌ שגיאה בשליחה: " + (data.error || "נסה שוב"));
+            // Show error message
+            showNotification(
+              "❌ שגיאה בשליחה: " + (data.error || "נסה שוב"),
+              "error",
+            );
           }
         } catch (error) {
           console.error("Error:", error);
-          alert("❌ שגיאה בחיבור. נסה שוב");
+          showNotification("❌ שגיאה בחיבור. נסה שוב", "error");
         } finally {
           // Re-enable button
           submitBtn.disabled = false;
           submitBtn.textContent = originalText;
         }
+      }
+      function showNotification(message, type) {
+        // Create notification element
+        const notification = document.createElement("div");
+        notification.className = `notification notification-${type}`;
+        notification.textContent = message;
+        notification.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 1rem 1.5rem;
+    background: ${type === "success" ? "#10b981" : "#ef4444"};
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    animation: slideIn 0.3s ease-out;
+    z-index: 9999;
+    font-weight: 600;
+    max-width: 400px;
+  `;
+
+        document.body.appendChild(notification);
+
+        // Auto remove after 3 seconds
+        setTimeout(() => {
+          notification.style.animation = "slideOut 0.3s ease-out";
+          setTimeout(() => {
+            notification.remove();
+          }, 300);
+        }, 3000);
       }
     </script>
   </body>
