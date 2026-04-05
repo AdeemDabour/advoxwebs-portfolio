@@ -11,7 +11,7 @@
   </head>
   <body>
     <!-- Navigation -->
-    <nav style="background-color: white;">
+    <nav style="background-color: white">
       <ul class="nav-links">
         <li><a href="#services">שירותים</a></li>
         <li><a href="#portfolio">פרויקטים</a></li>
@@ -19,40 +19,47 @@
       </ul>
       <div class="logo-gradient">AdvoxWebs</div>
     </nav>
-
     <!-- Hero Section -->
     <section class="hero">
-      <div style="width: 100%">
-        <img src="advoxwebs-logo.png" alt="AdvoxWebs Logo" class="hero-logo" />
-
-        <h1>היי, אני <span>Adeem</span></h1>
-        <p>מייסד AdvoxWebs | בוגר B.Sc במדעי המחשב | מפתח Full-Stack</p>
-        <p style="font-size: 1.1rem; margin-bottom: 2.5rem; font-weight: 500">
-          אני לא רק בונה אתרים — אני בונה מערכות שעוזרות לעסק שלך לגדול 🚀
-        </p>
-
-        <div class="hero-subtitle">
-          <p>
-            מתמחה בבניית אתרים, חנויות אונליין ומערכות Web לעסקים. בשנים
-            האחרונות עבדתי על פיתוח פרויקטים מודרניים עם דגש על
-            <span class="highlight">ביצועים, חוויית משתמש ופתרונות חכמים</span>.
-          </p>
-          <p style="margin-top: 1rem">
-            היום, עסק בלי אתר — מפסיד לקוחות. המטרה שלי היא לקחת רעיון ולהפוך
-            אותו ל<span class="highlight">מוצר דיגיטלי שעובד באמת</span>.
-          </p>
+      <div class="hero-container">
+        <div class="hero-left">
+          <div class="hero-logo-wrapper">
+            <img
+              src="advoxwebs-logo.png"
+              alt="AdvoxWebs Logo"
+              class="hero-logo"
+            />
+          </div>
         </div>
 
-        <button
-          class="cta-button"
-          onclick="
-            document
-              .getElementById('services')
-              .scrollIntoView({ behavior: 'smooth' })
-          "
-        >
-          בואו נדבר
-        </button>
+        <div class="hero-right">
+          <h2 class="hero-welcome">
+            <span style="color: #666" ,> שלום ברוכים הבאים ל</span
+            ><span class="logo-gradient-hero">AdvoxWebs</span>
+          </h2>
+
+          <p class="hero-problem-line">
+            מחפש לשדרג את העסק שלך?
+            <span class="hero-highlight">הגעת למקום הנכון!</span>
+          </p>
+
+          <p class="hero-description-line">
+            אני בונה אתרים, חנויות ומערכות שלא רק נראות טוב — אלא מביאות תוצאות.
+          </p>
+
+          <p class="hero-cta-text">מוכן לדחוף את העסק שלך צעד קדימה?</p>
+
+          <button
+            class="cta-button"
+            onclick="
+              document
+                .getElementById('services')
+                .scrollIntoView({ behavior: 'smooth' })
+            "
+          >
+            ההצעות שלי
+          </button>
+        </div>
       </div>
     </section>
 
@@ -450,7 +457,11 @@
     </div>
 
     <!-- CTA Section -->
-    <section id="contact" class="cta-section" style="background: rgb(180, 180, 180)">
+    <section
+      id="contact"
+      class="cta-section"
+      style="background: rgb(180, 180, 180)"
+    >
       <h2>מוכן להביא את העסק שלך לשלב הבא?</h2>
       <p>בואו נבנה משהו מדהים ביחד</p>
       <div class="cta-buttons-row">
