@@ -66,11 +66,35 @@ nav {
     transform: translateY(0);
   }
 }
-
-.logo {
+/* AdvoxWebs Logo Gradient - Mega Slow Fade */
+.logo-gradient {
+  background: linear-gradient(
+    90deg,
+    #0a3d3d 0%,
+    #0a3e3e 5%,
+    #0a4040 10%,
+    #0b4242 15%,
+    #0c4444 20%,
+    #0d4646 25%,
+    #0e4848 30%,
+    #0f4a4a 35%,
+    #104c4c 40%,
+    #124f4f 45%,
+    #145555 50%,
+    #165b5b 55%,
+    #186161 60%,
+    #1a6767 65%,
+    #1c6d6d 70%,
+    #207575 75%,
+    #248787 80%,
+    #289b9b 90%,
+    #2d9b9b 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--primary-dark);
 }
 
 .nav-links {
