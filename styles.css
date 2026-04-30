@@ -645,8 +645,8 @@ footer {
   }
 
   .hero-logo {
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
   }
 
   .hero-left {
@@ -1055,41 +1055,6 @@ footer {
   font-weight: 600;
 }
 
-.about-tech {
-  margin-top: 2.5rem;
-  padding-top: 2rem;
-  border-top: 2px solid #e5e7eb;
-}
-
-.about-tech h4 {
-  color: #1a5c5c;
-  font-size: 1.1rem;
-  margin-bottom: 1rem;
-  font-weight: 600;
-}
-
-.tech-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-}
-
-.tech-list span {
-  display: inline-block;
-  padding: 0.6rem 1.2rem;
-  background: #f8fbfb;
-  color: #2d9b9b;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  border: 1px solid #2d9b9b;
-}
-
-.tech-list span:hover {
-  background: #2d9b9b;
-  color: white;
-  transition: all 0.3s ease;
-}
 
 @media (max-width: 768px) {
   .about {
